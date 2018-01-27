@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact Card</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        
+
+        $(document).ready(function(){
+            
+            $('#submit').click(function(){     //starts listening for a click event on the submit buttn
+                $('#contactcard').append('<div class="person"><h3>'       //states that we want to append the table
+                    + $('input[name="first name"]').val() + ""     //gathers the input value(the typed input in the form, and sorts it to the appropriate destination)
+                    + $('input[name="last name"]').val() + "</h3><p>Click for more Details</p><p hidden>" 
+                    + $('textarea[name="description"]').val() + '</p></div>');
+                return false;
+            });
+
+            $(document).on('click', '.person', function(){
+                $(this).children('p').toggle('slow');
+            });
+
+
+        });         
+                    
+</script>
+</head>
+
+<body>
+<div class="body">
+    <div id="left">
+        <div class="form">
+            <form action="pro.HTML"> <h3>Add User</h3>
+                <label>First Name:</label> <input name="first name" type="text" placeholder=" First Name"> 
+                <label>Last Name:</label><input name="last name" type="text" placeholder=" Last Name">
+                <label>About You:</label><br><textarea name="description" type="text" id="description" ></textarea><br>
+                <input id="submit" type="submit" value="submit">
+            </form>
+        </div>    
+    </div>
+    
+    <div id="right">
+        <div id="contactcard"></div>
+    </div>
+
+    
+</div>
+</body>
+</html>
